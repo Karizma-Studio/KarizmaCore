@@ -13,7 +13,7 @@
     <Title>Karizma Core</Title>
     <Description>library for EF core Base Classes</Description>
     <RepositoryUrl>https://github.com/Karizma-Studio/KarizmaCore</RepositoryUrl>
-    <RepositoryType>EFcore, Server</RepositoryType>
+    <RepositoryType>EFCore, Server, Clean Architecture</RepositoryType>
     <PackageReleaseNotes>-base respository class
 -base dbContext class</PackageReleaseNotes>
   </PropertyGroup>
