@@ -8,7 +8,7 @@
     <Company>Karizma Stuido</Company>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>Karizma Studio</Authors>
     <Title>Karizma Core</Title>
     <Description>library for EF core Base Classes</Description>
