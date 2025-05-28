@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Security.AccessControl;
+using System.Text.Json;
 
 namespace KarizmaPlatform.Core.Utils;
 
@@ -12,7 +13,6 @@ public static class JsonExtensions
 
     public static string ToJsonString(this object obj)
     {
-        var json = JsonSerializer.Serialize(obj);
-        return JsonDocument.Parse(json).ToString() ?? "";
+        return JsonSerializer.Serialize(obj);
     }
 }
