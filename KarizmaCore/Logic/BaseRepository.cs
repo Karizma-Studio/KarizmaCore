@@ -29,17 +29,36 @@ namespace KarizmaPlatform.Core.Logic
         {
             var entity = await FindById(identifier);
             if (entity != null)
+            {
                 baseContext.Remove(entity);
+                await baseContext.SaveChangesAsync();
+            }
         }
 
-        public Task<TEntity?> FindById(long identifier)
+        public virtual async Task SoftDelete(long identifier)
+        {
+            var entity = await FindById(identifier);
+            if (entity != null)
+            {
+                entity.DeletedDate = DateTimeOffset.UtcNow;
+                baseContext.Update(entity);
+                await baseContext.SaveChangesAsync();
+            }
+        }
+
+        public virtual Task<TEntity?> FindById(long identifier)
         {
             return baseContext.Set<TEntity>().SingleOrDefaultAsync(x => x.Id == identifier);
         }
 
-        public Task<List<TEntity>> GetAll()
+        public virtual Task<List<TEntity>> GetAll()
         {
             return baseContext.Set<TEntity>().ToListAsync();
+        }
+
+        public virtual Task<List<TEntity>> GetAllNotDeleted()
+        {
+            return baseContext.Set<TEntity>().Where(entity => entity.DeletedDate == null).ToListAsync();
         }
     }
 }

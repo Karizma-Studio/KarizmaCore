@@ -8,6 +8,8 @@ namespace KarizmaPlatform.Core.Logic
         Task Update(TEntity entity);
         Task<TEntity?> FindById(long identifier);
         Task DeleteById(long identifier);
+        Task SoftDelete(long identifier);
         Task<List<TEntity>> GetAll();
+        Task<List<TEntity>> GetAllNotDeleted();
     }
 }
