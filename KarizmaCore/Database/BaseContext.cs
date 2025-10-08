@@ -39,5 +39,24 @@ namespace KarizmaPlatform.Core.Database
                 if (modifiedEntry is BaseEntity baseEntity)
                     baseEntity.UpdatedDate = DateTimeOffset.UtcNow;
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            AddAllSeeders(modelBuilder);
+        }
+
+        private void AddAllSeeders(ModelBuilder modelBuilder)
+        {
+            var seeders = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => !p.IsAbstract && typeof(SeederBase).IsAssignableFrom(p));
+
+            foreach (var seeder in seeders)
+            {
+                var seederInstance = Activator.CreateInstance(seeder) as SeederBase;
+                seederInstance?.AddData(modelBuilder);
+            }
+        }
     }
 }
