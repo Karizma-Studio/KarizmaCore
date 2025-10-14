@@ -2,6 +2,7 @@
 
 namespace KarizmaPlatform.Core.Logic
 {
+    [Obsolete]
     public interface IRepository<TEntity> where TEntity : BaseEntity
     {
         Task<TEntity> Add(TEntity entity);

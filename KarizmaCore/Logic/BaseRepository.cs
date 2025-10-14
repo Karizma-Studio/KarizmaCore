@@ -3,15 +3,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KarizmaPlatform.Core.Logic
 {
-    public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
+    /// <summary>
+    /// Base repository for entities with performing SaveChanges to the database.
+    /// </summary>
+    /// <typeparam name="TEntity">The type of the entity that inherits from BaseEntity.</typeparam>
+    /// <param name="baseContext">DbContext</param>
+    [Obsolete]
+    public abstract class BaseRepository<TEntity>(BaseContext baseContext) : IRepository<TEntity>
+        where TEntity : BaseEntity
     {
-        protected readonly BaseContext baseContext;
-
-        protected BaseRepository(BaseContext baseContext)
-        {
-            this.baseContext = baseContext;
-        }
-
         public virtual async Task<TEntity> Add(TEntity entity)
         {
             baseContext.Add(entity);
