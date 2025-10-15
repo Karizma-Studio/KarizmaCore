@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace KarizmaPlatform.Core.Utils;
 
-internal static class ControllerExtension
+public static class ControllerExtension
 {
     public static async Task<IActionResult> ToActionResult<T>(this ControllerBase controllerBase,
         Func<Task<ServiceResult<T>>> action, ILogger logger)
