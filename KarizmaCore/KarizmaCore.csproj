@@ -8,39 +8,42 @@
     <Company>Karizma Stuido</Company>
     <AssemblyVersion>2.0.0</AssemblyVersion>
     <FileVersion>2.0.0</FileVersion>
-    <Version>2.0.1</Version>
+    <Version>2.1.0</Version>
     <Authors>Karizma Studio</Authors>
     <Title>Karizma Core</Title>
     <Description>library for EF core Base Classes</Description>
     <RepositoryUrl>https://github.com/Karizma-Studio/KarizmaCore</RepositoryUrl>
     <RepositoryType>EFCore, Server, Clean Architecture</RepositoryType>
-    <PackageReleaseNotes>Version 2.0.0
+    <PackageReleaseNotes>Version 2.1.0
 
-Changes in BaseRepository:
+Added: Unified Service Result &amp; Controller Extension System
 
-Refactored BaseRepository to stop calling SaveChangesAsync internally.
+Introduced a new ServiceResult&lt;T&gt; class and ResultStatus enum to standardize all service-layer responses.
 
-Repository now only tracks entity state (Add, Update, Delete) using DbSet.
+This change replaces exception-driven flow in controllers with a consistent, type-safe response model.
 
-Added XML comments to all methods to clarify that actual persistence should be handled externally via UnitOfWork.
+Added a ControllerExtension helper that maps ServiceResult&lt;T&gt; outcomes to appropriate HTTP responses.
 
-Default UpdatedDate update is now optional via updateTimestamp parameter.
+Improved separation of concerns:
 
-Overall change improves UnitOfWork integration and prevents accidental commits during repository operations.
+The Application layer now returns logical statuses (e.g., Success, Invalid, Unauthorized) instead of HTTP-specific codes.
 
-Action Required:
+The Web/API layer maps those statuses to correct HTTP results (e.g., 200 OK, 400 Bad Request, 401 Unauthorized, etc.).
 
-Update calls to repository methods:
+Benefits:
 
-Do not rely on automatic SaveChanges in repository anymore.
+Cleaner, more predictable controller logic
 
-Ensure a UnitOfWork or DbContext.SaveChangesAsync is called externally after modifications.</PackageReleaseNotes>
+Easier testing and error handling
+
+Reusable service responses across APIs, background jobs, and other integration points</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.3" />
   </ItemGroup>
 
 
