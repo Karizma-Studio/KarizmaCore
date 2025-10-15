@@ -8,15 +8,15 @@
     <Company>Karizma Stuido</Company>
     <AssemblyVersion>2.0.0</AssemblyVersion>
     <FileVersion>2.0.0</FileVersion>
-    <Version>2.1.1</Version>
+    <Version>2.1.2</Version>
     <Authors>Karizma Studio</Authors>
     <Title>Karizma Core</Title>
     <Description>library for EF core Base Classes</Description>
     <RepositoryUrl>https://github.com/Karizma-Studio/KarizmaCore</RepositoryUrl>
     <RepositoryType>EFCore, Server, Clean Architecture</RepositoryType>
-    <PackageReleaseNotes>Version 2.1.1
+    <PackageReleaseNotes>Version 2.1.2
 
-Fix: Extension Access Level</PackageReleaseNotes>
+Fix: Extension class Access Level</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
