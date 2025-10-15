@@ -7,7 +7,7 @@ namespace KarizmaPlatform.Core.Utils;
 
 internal static class ControllerExtension
 {
-    internal static async Task<IActionResult> ToActionResult<T>(this ControllerBase controllerBase,
+    public static async Task<IActionResult> ToActionResult<T>(this ControllerBase controllerBase,
         Func<Task<ServiceResult<T>>> action, ILogger logger)
     {
         try
