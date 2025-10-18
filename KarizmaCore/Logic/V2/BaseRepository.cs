@@ -49,18 +49,18 @@ public abstract class BaseRepository<TEntity>(DbContext context) : IRepository<T
         }
     }
 
-    public Task<TEntity?> FindByIdAsync(long id)
+    public Task<TEntity?> FindByIdAsync(long id, bool asNoTracking = false)
     {
-        return dbSet.SingleOrDefaultAsync(x => x.Id == id);
+        return (asNoTracking ? dbSet.AsNoTracking() : dbSet).SingleOrDefaultAsync(x => x.Id == id);
     }
 
-    public Task<List<TEntity>> GetAllAsync()
+    public Task<List<TEntity>> GetAllAsync(bool asNoTracking = false)
     {
-        return dbSet.ToListAsync();
+        return (asNoTracking ? dbSet.AsNoTracking() : dbSet).ToListAsync();
     }
 
-    public Task<List<TEntity>> GetAllNotDeletedAsync()
+    public Task<List<TEntity>> GetAllNotDeletedAsync(bool asNoTracking = false)
     {
-        return dbSet.Where(entity => entity.DeletedDate == null).ToListAsync();
+        return (asNoTracking ? dbSet.AsNoTracking() : dbSet).Where(entity => entity.DeletedDate == null).ToListAsync();
     }
 }
