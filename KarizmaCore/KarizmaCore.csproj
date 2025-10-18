@@ -8,15 +8,16 @@
     <Company>Karizma Stuido</Company>
     <AssemblyVersion>2.0.0</AssemblyVersion>
     <FileVersion>2.0.0</FileVersion>
-    <Version>2.1.2</Version>
+    <Version>2.1.3</Version>
     <Authors>Karizma Studio</Authors>
     <Title>Karizma Core</Title>
     <Description>library for EF core Base Classes</Description>
     <RepositoryUrl>https://github.com/Karizma-Studio/KarizmaCore</RepositoryUrl>
     <RepositoryType>EFCore, Server, Clean Architecture</RepositoryType>
-    <PackageReleaseNotes>Version 2.1.2
+    <PackageReleaseNotes>Version 2.1.3
 
-Fix: Extension class Access Level</PackageReleaseNotes>
+Change log:
+AsNoTracking Option added to repositories functions</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
