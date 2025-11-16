@@ -27,4 +27,7 @@ public class ServiceResult<T>
 
     public static ServiceResult<T> Error(string message = "Internal Error") =>
         new(default, ResultStatus.Error, message);
+
+    public static ServiceResult<T> From(T? data, ResultStatus status, string? message) =>
+        new(data, status, message);
 }
